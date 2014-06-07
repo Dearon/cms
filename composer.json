@@ -1,7 +1,6 @@
 {
     "require": {
         "dispatch/dispatch": "dev-master",
-        "league/plates": "2.*",
         "michelf/php-markdown": "1.4.*"
     }
 }
