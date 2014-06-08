@@ -7,8 +7,8 @@
 
     <title><?= $title ?></title>
 
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= $base_url ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= $base_url ?>/assets/css/style.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,7 +23,7 @@
                 <h4><?= $site_name ?></h4>
                 <ul class="nav nav-pills nav-stacked">
                     <?php foreach($nav as $item): ?>
-                        <li><a href="<?= $item['url'] ?>"><?= $item['title'] ?></a></li>
+                        <li><a href="<?= $base_url ?><?= $item['url'] ?>"><?= $item['title'] ?></a></li>
                     <?php endforeach ?>
                 </ul>
             </div>

@@ -1,5 +1,5 @@
 <h1>Contact</h1>
-<form action="/contact" method="post" class="form-group">
+<form action="<?= $base_url ?>/contact" method="post" class="form-group">
     <?php if (flash('error')): ?>
         <div class="alert alert-danger"><?= html(flash('error')) ?></div>
     <?php endif; ?>

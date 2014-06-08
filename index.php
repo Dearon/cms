@@ -3,11 +3,13 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use \Michelf\Markdown;
 config('dispatch.views', __DIR__ . '/views');
+config('dispatch.url', '');
 
-// Get the site file and build the navigation
+// Get the site file and set the variables used on every page
 $site = json_decode(file_get_contents(__DIR__ . '/content/site.json'));
 $local = array();
 $locals['site_name'] = $site->site_name;
+$locals['base_url'] = config('dispatch.url');
 $locals['nav'] = array();
 
 foreach ($site->pages as $page) {
