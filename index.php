@@ -97,6 +97,7 @@ on('GET', ':url@*', function ($url) use ($locals, $site) {
 });
 
 error(404, function() use ($locals) {
+    $locals['title'] = 'Page not found';
     render('404', $locals);
 });
 
