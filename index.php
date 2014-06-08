@@ -17,6 +17,15 @@ foreach ($site->pages as $page) {
 // Routes
 on('GET', '/contact', function() use ($locals, $site) {
     $locals['title'] = 'Contact';
+
+    if (flash('email')) {
+        $locals['email'] = html(flash('email'));
+    }
+
+    if (flash('message')) {
+        $locals['message'] = html(flash('message'));
+    }
+
     render('contact', $locals);
 });
 
@@ -49,6 +58,9 @@ on('POST', '/contact', function() use ($site) {
         } else {
             flash('error', 'We could not send the message, please try again later.');
         }
+    } else {
+        flash('email', $from);
+        flash('message', $message);
     }
 
     redirect('/contact');
