@@ -23,7 +23,11 @@
                 <h4><?= $site_name ?></h4>
                 <ul class="nav nav-pills nav-stacked">
                     <?php foreach($nav as $item): ?>
-                        <li><a href="<?= $base_url ?><?= $item['url'] ?>"><?= $item['title'] ?></a></li>
+                        <?php if ($current_url == $item['url']): ?>
+                            <li class="active"><a href="<?= $base_url ?><?= $item['url'] ?>"><?= $item['title'] ?></a></li>
+                        <?php else: ?>
+                            <li><a href="<?= $base_url ?><?= $item['url'] ?>"><?= $item['title'] ?></a></li>
+                        <?php endif; ?>
                     <?php endforeach ?>
                 </ul>
             </div>

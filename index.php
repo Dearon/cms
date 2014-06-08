@@ -25,6 +25,7 @@ on('GET', '/contact', function() use ($locals, $site) {
     }
 
     $locals['title'] = 'Contact';
+    $locals['current_url'] = '/contact';
 
     if (flash('email')) {
         $locals['email'] = html(flash('email'));
@@ -82,6 +83,7 @@ on('GET', ':url@*', function ($url) use ($locals, $site) {
     foreach ($site->pages as $page) {
         if ('/' . $url == $page->url) {
             $locals['title'] = $page->title;
+            $locals['current_url'] = $page->url;
 
             if (isset($page->markdown)) {
                 $locals['article'] = Markdown::defaultTransform($page->markdown);
