@@ -16,6 +16,10 @@ foreach ($site->pages as $page) {
 
 // Routes
 on('GET', '/contact', function() use ($locals, $site) {
+    if (!array_key_exists('email', $site)) {
+        error(404);
+    }
+
     $locals['title'] = 'Contact';
 
     if (flash('email')) {
@@ -30,6 +34,10 @@ on('GET', '/contact', function() use ($locals, $site) {
 });
 
 on('POST', '/contact', function() use ($site) {
+    if (!array_key_exists('email', $site)) {
+        error(404);
+    }
+
     $to = $site->email;
     $from = params('email');
     $message = params('message');
@@ -79,7 +87,15 @@ on('GET', ':url@*', function ($url) use ($locals, $site) {
         }
     }
 
+    if (!array_key_exists('title', $locals)) {
+        error(404);
+    }
+
     render('page', $locals);
+});
+
+error(404, function() use ($locals) {
+    render('404', $locals);
 });
 
 dispatch();
