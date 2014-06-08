@@ -15,8 +15,43 @@ foreach ($site->pages as $page) {
 }
 
 // Routes
-on('GET', '/contact', function() {
-    echo 'Contact';
+on('GET', '/contact', function() use ($locals, $site) {
+    $locals['title'] = 'Contact';
+    render('contact', $locals);
+});
+
+on('POST', '/contact', function() use ($site) {
+    $to = $site->email;
+    $from = params('email');
+    $message = params('message');
+
+    $valid = true;
+
+    if (!filter_var($from, FILTER_VALIDATE_EMAIL)) {
+        flash('error-email', 'Enter a valid email address');
+        $valid = false;
+    }
+
+    if (empty($message)) {
+        flash('error-message', 'Enter a message');
+        $valid = false;
+    }
+
+    if ($valid) {
+        $headers  = 'From: ' . $from . "\r\n";
+        $headers .= 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'X-Mailer: PHP/' . phpversion();
+
+        $mail = mail($to, 'Message sent through contact form', $message, $headers);
+
+        if ($mail) {
+            flash('success', 'Your message has been sent');
+        } else {
+            flash('error', 'We could not send the message, please try again later.');
+        }
+    }
+
+    redirect('/contact');
 });
 
 on('GET', ':url@*', function ($url) use ($locals, $site) {
