@@ -1,0 +1,20 @@
+{
+    "site_name": "Site name",
+    "email": "contact@example.com",
+    "pages": [
+        {
+            "url": "/",
+            "title": "Home",
+            "markdown": "# Welcome!\nThis way is ideal if you have a little bit of text you want to display on a page."
+        },
+        {
+            "url": "/about",
+            "title": "About",
+            "markdown_file": "about.markdown"
+        },
+        {
+            "url": "/contact",
+            "title": "Contact"
+        }
+    ]
+}
