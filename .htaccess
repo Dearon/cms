@@ -1,5 +1,7 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-  # in this case, our app bootstrap file is index.php
-  RewriteRule !\.(js|html|ico|gif|jpg|png|css)$ index.php
-</IfModule>
+RewriteEngine on
+
+RewriteRule ^vendor/.*$ - [F,L]
+RewriteRule ^content/.*$ - [F,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php
