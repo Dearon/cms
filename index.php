@@ -80,6 +80,7 @@ on('POST', '/contact', function() use ($site) {
 });
 
 on('GET', ':url@*', function ($url) use ($locals, $site) {
+    $url = basename($url);
     foreach ($site->pages as $page) {
         if ('/' . $url == $page->url) {
             $locals['title'] = $page->title;
