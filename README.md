@@ -1,6 +1,6 @@
 # Introduction
 
-This is a quick and very simple PHP CMS inspired by static site generators like Jekyll. The main reason for why I made it was to be able to use URL rewriting and a contact form. Realistically I don't expect anyone to use this, but feel free to open a issue on Github if you encounter a bug or want to see a feature.
+This is a tiny and simple PHP CMS inspired by static site generators like Jekyll. The main reason for building it was to be able to use a contact form and to play around with [Dispatch](https://github.com/noodlehaus/dispatch). Realistically I don't expect anyone to use this, but feel free to open a issue on Github if you encounter a bug or want to see a feature.
 
 # Installation
 
