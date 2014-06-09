@@ -76,7 +76,7 @@ on('POST', '/contact', function() use ($site) {
         flash('message', $message);
     }
 
-    redirect('/contact');
+    redirect($site->site_url . '/contact');
 });
 
 on('GET', ':url@*', function ($url) use ($locals, $site) {
